@@ -1,11 +1,10 @@
 package Day4;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static Utils.ReadFile.getRows;
 
 public class Task2 {
 
@@ -26,20 +25,7 @@ public class Task2 {
     public static void main(String[] args) {
 
         Map<Integer, Integer> numOfCopiesOfEachCard = new HashMap<>();
-        String[] rows = null;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("Day4.txt"))) {
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-            }
-            String input = stringBuilder.toString();
-            rows = input.split("\n");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String[] rows = getRows("Day4.txt");
 
         for (int i = 0; i < rows.length; i++)
             numOfCopiesOfEachCard.put(i, 1);

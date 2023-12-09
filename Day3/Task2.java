@@ -1,12 +1,11 @@
 package Day3;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static Utils.ReadFile.getRows;
 
 public class Task2 {
 
@@ -64,21 +63,9 @@ public class Task2 {
 
     public static void main(String[] args) {
 
-        String[] rows = null;
+        String[] rows = getRows("Day3.txt");
         int sum = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Day3.txt"))) {
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-            }
-            String input = stringBuilder.toString();
-            rows = input.split("\n");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         for (int i = 0; i < rows.length; i++) {
             Pattern pattern = Pattern.compile("\\*");
