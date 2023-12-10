@@ -26,7 +26,7 @@ public class Main {
     }
 
     private static int getSum(int sum, Map<String, Integer> handToBet, CardOrganizer cardOrganizer, String cardOrderJokers) {
-        cardOrganizer.OrderByStrength(cardOrderJokers);
+        cardOrganizer.orderByStrength(cardOrderJokers);
         List<String> listOfSortedHands = cardOrganizer.getSortedHands();
 
         for (int i = 0; i < listOfSortedHands.size(); i++) {
@@ -43,7 +43,7 @@ public class Main {
 
         CardOrganizer cardOrganizer = new CardOrganizer();
         List<String> hands = new ArrayList<>(handToBet.keySet());
-        cardOrganizer.OrderByTypeWithJokers(hands);
+        cardOrganizer.orderByTypeWithJokers(hands);
         return getSum(sum, handToBet, cardOrganizer, CARD_ORDER_JOKERS);
     }
 
@@ -55,7 +55,7 @@ public class Main {
         CardOrganizer cardOrganizer = new CardOrganizer();
 
         List<String> hands = new ArrayList<>(handToBet.keySet());
-        cardOrganizer.OrderByType(hands);
+        cardOrganizer.orderByType(hands);
         return getSum(sum, handToBet, cardOrganizer, CARD_ORDER);
     }
 

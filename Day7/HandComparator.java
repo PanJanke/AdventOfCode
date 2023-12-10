@@ -7,8 +7,8 @@ public class HandComparator implements Comparator<String> {
 
     private static String CARD_ORDER;
 
-    public HandComparator(String cardOrder){
-         CARD_ORDER =cardOrder;
+    public HandComparator(String cardOrder) {
+        CARD_ORDER = cardOrder;
     }
 
     private int compareCards(String card1, String card2) {
@@ -16,7 +16,7 @@ public class HandComparator implements Comparator<String> {
     }
 
     @Override
-    public int compare(String hand1,String hand2) {
+    public int compare(String hand1, String hand2) {
 
         for (int i = 0; i < hand1.length(); i++) {
             String card1 = Character.toString(hand1.charAt(i));

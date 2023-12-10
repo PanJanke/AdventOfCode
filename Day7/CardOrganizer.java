@@ -25,7 +25,7 @@ public class CardOrganizer {
     }
 
 
-    public void OrderByStrength(String cardOrder) {
+    public void orderByStrength(String cardOrder) {
         HandComparator handComparator = new HandComparator(cardOrder);
         FiveOfaKind.sort(handComparator);
         FourOfaKind.sort(handComparator);
@@ -43,7 +43,7 @@ public class CardOrganizer {
                 .toString();
     }
 
-    public String SwitchJokers(String input, char joker) {
+    public String switchJokers(String input, char joker) {
         Map<Character, Integer> charCountMap = new HashMap<>();
         for (char c : input.toCharArray()) {
             charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
@@ -64,10 +64,10 @@ public class CardOrganizer {
         return input;
     }
 
-    public void OrderByTypeWithJokers(List<String> input) {
+    public void orderByTypeWithJokers(List<String> input) {
 
         for (String hand : input) {
-                String handSwitched=SwitchJokers(hand,'J');
+            String handSwitched = switchJokers(hand, 'J');
 
             putInCorrectList(hand, handSwitched);
         }
@@ -82,32 +82,35 @@ public class CardOrganizer {
         List<Integer> valuesList = new ArrayList<>(charCountMap.values());
         valuesList.sort(Collections.reverseOrder());
 
-        if (valuesList.size() == 1)
-            FiveOfaKind.add(hand);
-
-        else if (valuesList.size() == 2) {
-            if (valuesList.get(0) == 4)
-                FourOfaKind.add(hand);
-            else
-                FullHouse.add(hand);
-        } else if (valuesList.size() == 3) {
-            if (valuesList.get(0) == 3)
-                ThreeOfaKind.add(hand);
-            else
-                TwoPair.add(hand);
-        } else if (valuesList.size() == 4)
-            OnePair.add(hand);
-
-        else
-            HighCard.add(hand);
+        switch (valuesList.size()) {
+            case 1:
+                FiveOfaKind.add(hand);
+                break;
+            case 2:
+                if (valuesList.get(0) == 4)
+                    FourOfaKind.add(hand);
+                else
+                    FullHouse.add(hand);
+                break;
+            case 3:
+                if (valuesList.get(0) == 3)
+                    ThreeOfaKind.add(hand);
+                else
+                    TwoPair.add(hand);
+                break;
+            case 4:
+                OnePair.add(hand);
+                break;
+            default:
+                HighCard.add(hand);
+                break;
+        }
     }
 
-    public void OrderByType(List<String> input) {
-
+    public void orderByType(List<String> input) {
         for (String hand : input) {
             putInCorrectList(hand, hand);
         }
-
     }
 
     public List<String> getSortedHands() {
@@ -121,6 +124,4 @@ public class CardOrganizer {
         listOfSortedHands.addAll(FiveOfaKind);
         return listOfSortedHands;
     }
-
-
 }
