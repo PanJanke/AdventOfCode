@@ -27,8 +27,8 @@ public class Task1 {
         int sum = 0;
 
 
-        for (int i = 0; i < rows.length; i++) {
-            String[] numbers = rows[i].split("\\|");
+        for (String row : rows) {
+            String[] numbers = row.split("\\|");
             String winningNumbers = numbers[0].split("\\:")[1];
             String myNumbers = numbers[1];
             int[] winNumbersArray = getNumbers(winningNumbers);

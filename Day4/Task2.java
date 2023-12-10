@@ -41,8 +41,8 @@ public class Task2 {
                 int tempCount = checkCards(winNumbersArray, myNumbersArray);
 
                 for (int k = 1; k < tempCount + 1; k++) {
-                    int baseVaule = numOfCopiesOfEachCard.get(i + k);
-                    numOfCopiesOfEachCard.put(i + k, baseVaule + 1);
+                    int baseValue = numOfCopiesOfEachCard.get(i + k);
+                    numOfCopiesOfEachCard.put(i + k, baseValue + 1);
                 }
 
             }
